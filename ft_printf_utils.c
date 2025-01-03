@@ -6,7 +6,7 @@
 /*   By: pede-jes <pede-jes@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 14:45:26 by pede-jes          #+#    #+#             */
-/*   Updated: 2025/01/02 14:50:38 by pede-jes         ###   ########.fr       */
+/*   Updated: 2025/01/03 18:25:12 by pede-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	ft_putstring(char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return (ft_putstring("(null)"));
 	while (*str)
 	{
 		i += write(1, str, 1);
@@ -67,13 +69,13 @@ int	ft_puthex(unsigned long n)
 
 int	ft_puthexmax(unsigned long n)
 {
-	int		i;
 	char	*hex;
+	int		i;
 
-	i = 0;
 	hex = "0123456789ABCDEF";
+	i = 0;
 	if (n >= 16)
-		i += ft_puthex(n / 16);
+		i += ft_puthexmax(n / 16);
 	i += write(1, &hex[n % 16], 1);
 	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: pede-jes <pede-jes@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 14:41:21 by pede-jes          #+#    #+#             */
-/*   Updated: 2025/01/02 16:11:20 by pede-jes         ###   ########.fr       */
+/*   Updated: 2025/01/03 18:23:55 by pede-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	ft_printf(const char *string, ...)
 
 	i = 0;
 	va_start(ap, string);
+	if(!string)
+		return (-1);
 	while (*string)
 	{
 		if (*string == '%')
@@ -35,7 +37,7 @@ int	ft_printf(const char *string, ...)
 		string++;
 	}
 	va_end(ap);
-	return (0);
+	return (i);
 }
 
 int	ft_putchar(char c)
@@ -60,22 +62,21 @@ int	ft_checksignal(const char *string, va_list args)
 	else if (*string == 'u')
 		i += ft_putdecimal(va_arg(args, int));
 	else if (*string == 'x')
-		i += ft_puthex(va_arg(args, int));
+		i += ft_puthex(va_arg(args, unsigned int));
+	else if (*string == 'X')
+		i += ft_puthexmax(va_arg(args, unsigned int));
 	else if (*string == '%')
 		i += ft_putchar('%');
 	return (i);
 }
 
-int	ft_putdecimal(int n)
+int	ft_putdecimal(unsigned int number)
 {
 	int	i;
-
+	long long n;
+	
 	i = 0;
-	if (n < 0)
-	{
-		i += write(1, "-", 1);
-		n = n * -1;
-	}
+	n = number;
 	if (n >= 10)
 	{
 		i += ft_putnumber(n / 10);
@@ -84,15 +85,17 @@ int	ft_putdecimal(int n)
 	return (i);
 }
 
-int	ft_putnumber(int n)
+int	ft_putnumber(int number)
 {
 	int	i;
-
+	long n;
+	
 	i = 0;
+	n = number;
 	if (n < 0)
 	{
 		i += write(1, "-", 1);
-		n = n * -1;
+		n = -n;
 	}
 	if (n >= 10)
 	{
@@ -109,7 +112,7 @@ int	ft_putnumber(int n)
 
 // 	c = "abobora";
 // 	i = -2546;
-// 	ft_printf("%s\n",c);
-// 	printf("endereço :%s", c);
+// 	ft_printf("%s\n", NULL);
+// 	printf("ptf :%s", NULL);
 // 	return (0);
 // }

@@ -6,7 +6,7 @@
 /*   By: pede-jes <pede-jes@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 14:41:21 by pede-jes          #+#    #+#             */
-/*   Updated: 2025/01/03 18:23:55 by pede-jes         ###   ########.fr       */
+/*   Updated: 2025/01/03 18:27:59 by pede-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_printf(const char *string, ...)
 
 	i = 0;
 	va_start(ap, string);
-	if(!string)
+	if (!string)
 		return (-1);
 	while (*string)
 	{
@@ -72,9 +72,9 @@ int	ft_checksignal(const char *string, va_list args)
 
 int	ft_putdecimal(unsigned int number)
 {
-	int	i;
-	long long n;
-	
+	int			i;
+	long long	n;
+
 	i = 0;
 	n = number;
 	if (n >= 10)
@@ -87,9 +87,9 @@ int	ft_putdecimal(unsigned int number)
 
 int	ft_putnumber(int number)
 {
-	int	i;
-	long n;
-	
+	int		i;
+	long	n;
+
 	i = 0;
 	n = number;
 	if (n < 0)

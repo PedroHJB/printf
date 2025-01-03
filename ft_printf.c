@@ -6,7 +6,7 @@
 /*   By: pede-jes <pede-jes@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 14:41:21 by pede-jes          #+#    #+#             */
-/*   Updated: 2025/01/03 18:27:59 by pede-jes         ###   ########.fr       */
+/*   Updated: 2025/01/03 18:29:23 by pede-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,15 +104,3 @@ int	ft_putnumber(int number)
 	i += ft_putchar((n % 10) + '0');
 	return (i);
 }
-
-// int	main(void)
-// {
-// 	char	*c;
-// 	int		i;
-
-// 	c = "abobora";
-// 	i = -2546;
-// 	ft_printf("%s\n", NULL);
-// 	printf("ptf :%s", NULL);
-// 	return (0);
-// }
